@@ -8,6 +8,8 @@ if (!isset($_SESSION['userID']) && $uri != '/' && $uri != '/login') {
    exit();
 }
 
+
+
 if($uri == '/'){
     require 'controllers/index.php';
 }elseif($uri == '/users'){

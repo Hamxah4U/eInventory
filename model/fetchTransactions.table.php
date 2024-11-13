@@ -104,8 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['tcode'])) {
                 <tr>
                   <td>
 									  <center><img src="images/sunnahHospital.png" style="height: 80px;" alt="Logo"/><br/>
-                    <p style="text-align: center;"><strong>Sunna Hospital Plateau State</strong></p>
-                    <p style="text-align: center;">Anguwan Rimi Plateau State</p>
+                    <p style="text-align: center;"><strong><?= $storeName ?></strong></p>
+                    <!-- <p style="text-align: center;">Anguwan Rimi Plateau State</p> -->
                     <p style="text-align: center;">BILLING RECEIPT</p>
                     <p style="text-align: center;">Customer's Copy</p>
                     </center>

@@ -29,4 +29,5 @@
     }
 
     $db = new Database();
+    $storeName = 'Sky-Tech Network';
 ?>
