@@ -11,6 +11,7 @@
     $tcode = htmlspecialchars($_POST['tcode']);
     $price = htmlspecialchars($_POST['cprice']);
     $qty = htmlspecialchars($_POST['qty']);
+    $nhisno = htmlspecialchars($_POST['nhisno']);
     $user = $_SESSION['email'];
     $issuedqty = htmlentities($_POST['issuedqty']);
 
@@ -56,8 +57,8 @@
     if(empty($errors)){
       $amount =  $price * $issuedqty;
 
-      $stmt = $db->conn->prepare("INSERT INTO transaction_tbl (tCode, tDepartment, Product, Price, qty, Amount, Customer, TrasacBy)
-       VALUES(:tcode, :tdpt, :product, :price, :qty, :amount, :customer, :TrasacBy) ");
+      $stmt = $db->conn->prepare("INSERT INTO transaction_tbl (tCode, tDepartment, Product, Price, qty, Amount, Customer, TrasacBy, nhisno)
+       VALUES(:tcode, :tdpt, :product, :price, :qty, :amount, :customer, :TrasacBy, :nhisno) ");
       $stmt->bindParam(':tcode', $tcode, PDO::PARAM_STR);
       $stmt->bindParam(':tdpt', $dpt, PDO::PARAM_STR);
       $stmt->bindParam(':product', $product, PDO::PARAM_STR);
@@ -66,6 +67,7 @@
       $stmt->bindParam(':amount', $amount, PDO::PARAM_INT);
       $stmt->bindParam(':customer', $customername, PDO::PARAM_STR);
       $stmt->bindParam(':TrasacBy', $user);
+      $stmt->bindParam(':nhisno', $nhisno, PDO::PARAM_INT);
       $result = $stmt->execute();
     }
 

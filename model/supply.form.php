@@ -43,9 +43,10 @@
         $errors['purchasePrice'] = 'Purchase cost cannot be less than 0';
       }
 
-      $stmtpro = $db->checkExist('SELECT `SupplyID`,`Quantity`,`Department`, `ProductName` FROM `supply_tbl` WHERE `Department` = :Department AND `ProductName` = :ProductName',[
+      $stmtpro = $db->checkExist('SELECT `SupplyID`,`Quantity`,`Department`, `ProductName`, `ExpiryDate` FROM `supply_tbl` WHERE `ExpiryDate` = :ExpiryDate AND `Department` = :Department AND `ProductName` = :ProductName',[
         ':Department' => $unit,
-        ':ProductName' => $product
+        ':ProductName' => $product,
+        ':ExpiryDate' => $ExpiryDate
       ]);
       $productExist = $stmtpro->fetch(PDO::FETCH_ASSOC);
       

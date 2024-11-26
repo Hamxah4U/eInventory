@@ -48,6 +48,12 @@
                 </li>
 
                 <li class="nav-item active">
+                    <a class="nav-link" href="/inventoryreport">
+                    <i class="fas fa-truck"></i>
+                    Inventory Report</a>
+                </li>
+
+                <li class="nav-item active">
                     <a class="nav-link" href="report">
                     <i class="fas fa-chart-pie"></i>
                     Report</a>
@@ -60,12 +66,12 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="alert('Coming Soon!')">
+                    <a class="nav-link" href="/nhisbilling">
                         <i class="fas fa-file-invoice"></i> NHIS</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="alert('Coming Soon!')">
+                    <a class="nav-link" href="/finance">
                         <i class="fas fa-money-bill"></i>
                          Finance
                     </a>

@@ -32,10 +32,10 @@ $cname = isset($_SESSION['customername']) ? $_SESSION['customername'] : "";
 
 <script>
 	function toggleDiv() {
-    	var paidDiv = document.getElementById("paid_div");
-    	var notPaidDiv = document.getElementById("not_paid_div");
-    	paidDiv.style.display = "none";
-    	notPaidDiv.style.display = "block";
+    var paidDiv = document.getElementById("paid_div");
+    var notPaidDiv = document.getElementById("not_paid_div");
+    paidDiv.style.display = "none";
+    notPaidDiv.style.display = "block";
 	}
 </script>
 
@@ -61,8 +61,8 @@ $cname = isset($_SESSION['customername']) ? $_SESSION['customername'] : "";
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 							<h1 class="h3 mb-0 text-gray-800"></h1>
-              <a href="/billing">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modelProduct"><strong>Billing</strong></button>
+              <a href="/nhisbilling">
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modelProduct"><strong>NHIS Billing</strong></button>
               </a>
 					</div>
 
@@ -70,13 +70,13 @@ $cname = isset($_SESSION['customername']) ? $_SESSION['customername'] : "";
 					<form id="addTransaction">
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label><strong>Billing Code:</strong></label>
-                <input value="<?= $tCode; ?>" readonly type="text" name="tcode" class="form-control" />
-                <input placeholder="e.g 123456789" value="" type="hidden" name="nhisno" class="form-control" required />
+                <label><strong>NHIS No.:</strong></label>
+                <input  value="<?= $tCode; ?>"   type="hidden" name="tcode" class="form-control" />
+                <input placeholder="e.g 123456789" type="text" name="nhisno" class="form-control" required />
               </div>
               <div class="form-group col-md-6">
-                <label><strong>Customer's Name:</strong></label>
-                <input name="customername" value="<?= $cname; ?>" type="text" class="form-control" />
+                <label><strong>Patient's Name:</strong></label>
+                <input placeholder="e.g Musa Sani" name="customername" value="<?= $cname; ?>" type="text" class="form-control" />
                 <small class="text-danger" id="errorName"></small>
               </div>
             </div>
@@ -195,7 +195,7 @@ $cname = isset($_SESSION['customername']) ? $_SESSION['customername'] : "";
   function fetchProductDetails(productID) {
     if (productID !== "") {
       $.ajax({
-          url: "model/price.ajax.php",
+          url: "model/nhihprice.ajax.php",
           type: "POST",
           data: { product_id: productID },
           success: function(response) {

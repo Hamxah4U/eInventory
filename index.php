@@ -30,7 +30,12 @@ if($uri == '/'){
     require 'controllers/supply.php';
 }elseif($uri == '/changepassword'){
     require 'controllers/changepassword.php';
+}elseif($uri == '/finance'){
+    require 'controllers/user.finance.php';
+}elseif($uri == '/nhisbilling'){
+    require 'controllers/nhis.php';
+}elseif($uri == '/inventoryreport'){
+    require 'controllers/inventoryreport.php';
 }else{
     require 'controllers/404.php';
-    //echo "Page not found.";
 }
