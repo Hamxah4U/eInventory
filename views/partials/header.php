@@ -20,6 +20,7 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/icofont/icofont.min.css">
     <style>
         .text-danger{
             font-style: italic;

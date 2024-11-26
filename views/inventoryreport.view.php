@@ -149,6 +149,8 @@
         $(row).addClass('table-danger');
       } else if (expiryDate <= threeMonthsFromNow) {
         $(row).addClass('table-warning');
+      }else{
+        $(row).addClass('table-success');
       }
     }, 
 	});

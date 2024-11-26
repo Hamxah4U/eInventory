@@ -49,7 +49,7 @@
 
                 <li class="nav-item active">
                     <a class="nav-link" href="/inventoryreport">
-                    <i class="fas fa-truck"></i>
+                    <i class="fas fa-search"></i>
                     Inventory Report</a>
                 </li>
 
