@@ -150,8 +150,6 @@
       } else if (expiryDate <= threeMonthsFromNow) {
         $(row).addClass('table-warning');
       }
-    },
-
-
+    }, 
 	});
 </script>
