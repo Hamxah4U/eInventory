@@ -45,14 +45,14 @@
 									<label for="sdate">Start Date:</label>
 								</div>
 								<div class="col-md-4">
-									<input type="date" name="sdate" class="form-control">
+									<input type="date" name="sdate" class="form-control" id="sdate">
 									<small class="text-danger" id="errorF"></small>
 								</div>
 								<div class="col-md-2">
 									<label for="edate">End Date:</label>
 								</div>
 								<div class="col-md-4">
-									<input type="date" name="edate" class="form-control">
+									<input type="date" name="edate" class="form-control" id="edate">
 									<small class="text-danger" id="errorS"></small>
 								</div>
 							</div>
