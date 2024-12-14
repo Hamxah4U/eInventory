@@ -29,5 +29,6 @@
     }
 
     $db = new Database();
-    $storeName = 'Sky-Tech Network';
+    $storeName = 'Sunnah Hospital';
+    $state = 'Jos, Plateau State Nigeria';
 ?>

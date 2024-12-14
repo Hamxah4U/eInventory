@@ -1,40 +1,23 @@
 <style>
-  /* Centering the content and setting width suitable for thermal printer */
-  #contentToPrint {
-    width: 70mm;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  th, td {
-    padding: 2px 5px;
-    text-align: left;
-  }
-
-  th {
-    font-weight: bold;
-  }
-
-  .footer {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .center-text {
-    text-align: center;
-  }
-</style>
+        table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 5px;
+        }
+        hr {
+            border: 1px solid black;
+        }
+        .center {
+            text-align: center;
+            background-color: white;
+        }
+        .footer {
+            font-size: 8pt;
+        }
+    </style>
 <?php
 require 'Database.php';
 session_start();
@@ -100,37 +83,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['tcode'])) {
             $stmt = $db->checkExist($sql, [':tCode' => $tCode]);
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($products)): ?>
-              <table>
-                <tr>
-                  <td>
-									  <center><img src="images/sunnahHospital.png" style="height: 80px;" alt="Logo"/><br/>
-                    <p style="text-align: center;"><strong><?= $storeName ?></strong></p>
-                    <!-- <p style="text-align: center;">Anguwan Rimi Plateau State</p> -->
-                    <p style="text-align: center;">BILLING RECEIPT</p>
-                    <p style="text-align: center;">Customer's Copy</p>
-                    </center>
-                  </td>
-                </tr>
-              
-                <tr>
-                  <td colspan="2">TID:</td>
-                  <td colspan="3"><?= $tCode; ?></td>
-                </tr>
 
-                <tr>
-                  <td colspan="2">Customer:</td>
-                  <td colspan="3"><?= $row['pCustomer'] ?></td>
-                </tr>
-
-                <tr>
-                  <th>#</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Qty</th>
-                  <th>Amount</th>
-                </tr>
-
-                <?php
+<div id="printinvoice">
+<table>
+  <tr>
+    <td colspan="2" style="text-align:center; background-color:white">
+    <img src="../img/sunnahHospital.png" style="height:70px; margin:0" /><br />
+        <strong style="margin: 0;"><?= $storeName ?></strong><br />
+        <span style="font-size:8pt; margin: 0"><?= $state ?><br /></span>
+        <strong style="margin-bottom: 0;">BILLING RECEIPT</strong>
+        <br /> Customer's Copy<hr />
+    </td>
+  </tr>
+  <tr>
+    <td>TID:</td>
+    <td id="tid"><?= $tCode; ?></td>
+  </tr>
+  <tr>
+      <td>Customer:</td>
+      <td id="patient"><?= $row['pCustomer'] ?></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <hr />
+      <table id="transactionTable" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+            <tbody>
+            <?php
                   $i = 1;
                   $totalAmountC = 0;
                   foreach($products as $p => $row) :?>
@@ -141,18 +128,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['tcode'])) {
                   <td><?= $row['qty'] ?></td>
                   <td><?= $row['Amount'] ?></td>
                 </tr>
-              <?php endforeach ?>
-              <tr>
-                <td colspan="2"></td>
-                <td><strong>Total:</strong></td>
-                <td><strong><?= number_format($totalAmount, 2) ?></strong></td>
+                <?php endforeach ?>
+                <tr>
+                  <td colspan="3"></td>
+                  <td><strong>Total:</strong></td>
+                  <td><strong><?= number_format($totalAmount, 2) ?></strong></td>
               </tr>
-              </table>
-              <div class="footer">
-                <p>Printed By: <?= $_SESSION['fname']?></p>
-                <p>Date: <?= date('D-M-Y h:i:s') ?></p>
-                <p>Powered by: HID Tech +2348037856962</p>
-              </div>
+             
+            </tbody>
+        </table>
+        <div class="footer">
+            <hr />
+            <p style="margin: 0;">Printed By: <?= $_SESSION['fname']?>&nbsp; |&nbsp; Date: <?= date('D-M-Y h:i:s') ?></p>
+            <p style="margin: 0;">Powered by: HID Tech +2348037856962</p>
+        </div>
+    </td>
+  </tr>
+    </table>
+</div>          
+
             <?php endif ?>
         </div>
       </div>
