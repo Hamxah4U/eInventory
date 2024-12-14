@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $price = htmlspecialchars($_POST['price']);
     $expiryDate = htmlspecialchars($_POST['ExpiryDate']);
     $SupplyID = htmlspecialchars($_POST['supplyID']);
+    $purchasePrice = htmlspecialchars($_POST['purchasePrice']);
+
+    if(empty(trim($purchasePrice))){
+      $errors['purchasePrice'] = 'Purchase price cannot be empty!';
+    }
 
     if ($unit == '--choose--') {
       $errors['unit'] = 'Department cannot be empty!';
@@ -34,13 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if(empty($errors)){
-      $stmt = $db->conn->prepare("UPDATE `supply_tbl` SET `ProductName` = :product, `ExpiryDate` = :ExpiryDate, `Quantity` = :Quantity, `Price` = :Price, Department = :Department  WHERE `SupplyID` = :id ");
+      $stmt = $db->conn->prepare("UPDATE `supply_tbl` SET `Pprice` = :Pprice, `ProductName` = :product, `ExpiryDate` = :ExpiryDate, `Quantity` = :Quantity, `Price` = :Price, Department = :Department WHERE `SupplyID` = :id ");
       $stmt->bindParam(':product', $product, PDO::PARAM_STR);
       $stmt->bindParam(':ExpiryDate', $expiryDate);
       $stmt->bindParam(':Quantity', $qty, PDO::PARAM_INT);
       $stmt->bindParam(':Price', $price, PDO::PARAM_INT);
       $stmt->bindParam(':Department', $unit, PDO::PARAM_STR);
       $stmt->bindParam(':id', $SupplyID);
+      $stmt->bindParam(':Pprice', $purchasePrice, PDO::PARAM_INT);
       $result = $stmt->execute();
       if($result){
         $success['message'] = 'Record updated!';

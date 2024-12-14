@@ -228,7 +228,8 @@
 					$('#qty').val(response.Quantity);
 					$('#productNameID').val(response.ProductName);
 					$('#priceID').val(response.Price);
-					$('#ExpiryDate').val(response.ExpiryDate);
+					$('#ExpiryDate').val(response.ExpiryDate);//purchasePrice
+					$('#purchasePrice').val(response.Pprice);
 					$('#action-btn').removeClass('btn-primary').addClass('btn-info').text('Update').data('mode', 'edit');
 					$('#modelSupply').modal('show');
 					$('#modelSupply').on('hidden.bs.modal', function(){
